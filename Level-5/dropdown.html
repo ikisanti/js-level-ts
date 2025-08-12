@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Custom Dropdown</title>
+    <style>
+        #dropdown {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 150px;
+            cursor: pointer;
+        }
+
+        .dropdown-options {
+            display: none;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+        }
+
+        .dropdown-options div {
+            padding: 5px;
+        }
+
+        .dropdown-options div:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dropdown">Select an option</div>
+    <div class="dropdown-options" id="options">
+        <div>Option 1</div>
+        <div>Option 2</div>
+        <div>Option 3</div>
+    </div>
+
+    <script>
+        const dropdown = document.getElementById("dropdown");
+        const options = document.getElementById("options");
+
+        dropdown.addEventListener("click", () => {
+            options.style.display = options.style.display === "block" ? "none" : "block";
+        });
+
+        options.querySelectorAll("div").forEach(option => {
+            option.addEventListener("click", () => {
+                dropdown.textContent = option.textContent;
+                options.style.display = "none";
+            });
+        });
+    </script>
+</body>
+
+</html>

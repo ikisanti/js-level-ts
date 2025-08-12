@@ -1,0 +1,80 @@
+<!-- // Basic Drag & Drop
+// 🎯 Goal:
+
+// Create a simple UI with:
+
+//     A draggable box
+
+//     A drop area
+
+//     When the box is dropped, change the text or color of the drop area
+
+//     🔧 Use only HTML + vanilla JS
+
+// ✅ Final result behavior:
+
+//     You drag a red square.
+
+//     You drop it into the gray drop zone.
+
+//     The drop zone says: "Dropped!" and changes to green. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Drag and Drop</title>
+    <style>
+        #drag-box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 20px;
+            cursor: move;
+        }
+
+        #drop-zone {
+            width: 200px;
+            height: 150px;
+            border: 2px dashed #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="drag-box" draggable="true">Drag me</div>
+    <div id="drop-zone">Drop here</div>
+
+    <script>
+        const dragBox = document.getElementById("drag-box");
+        const dropZone = document.getElementById("drop-zone");
+
+        // Needed to allow dropping
+        dropZone.addEventListener("dragover", function (e) {
+            e.preventDefault();
+        });
+
+        dragBox.addEventListener("dragstart", function (e) {
+            e.dataTransfer.setData("text/plain", "drag-box");
+        });
+
+        dropZone.addEventListener("drop", function (e) {
+            e.preventDefault();
+            const id = e.dataTransfer.getData("text/plain");
+            if (id === "drag-box") {
+                dropZone.textContent = "Dropped!";
+                dropZone.style.backgroundColor = "lightgreen";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

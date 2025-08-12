@@ -1,0 +1,42 @@
+<!--
+//? Drag & Drop (DOM)
+//? Prompt:
+//? Create a draggable box and a drop area. When dropped, show "Dropped!" inside the target area.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: coral;
+            cursor: grab;
+        }
+
+        #dropzone {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed gray;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" draggable="true">Drag me</div>
+    <div id="dropzone"></div>
+
+    <script>
+        const box = document.getElementById("box");
+        const dropzone = document.getElementById("dropzone");
+
+        dropzone.addEventListener("dragover", (e) => e.preventDefault());
+        dropzone.addEventListener("drop", () => {
+            dropzone.textContent = "Dropped!";
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modal</title>
+    <style>
+        #modal {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 30%;
+            background: white;
+            padding: 1rem;
+            border: 1px solid #ccc;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <button id="openBtn">Open Modal</button>
+
+    <div id="overlay"></div>
+    <div id="modal">
+        <p>This is a modal!</p>
+        <button id="closeBtn">Close</button>
+    </div>
+
+    <script>
+        const openBtn = document.getElementById("openBtn");
+        const closeBtn = document.getElementById("closeBtn");
+        const modal = document.getElementById("modal");
+        const overlay = document.getElementById("overlay");
+
+        openBtn.onclick = () => {
+            modal.style.display = "block";
+            overlay.style.display = "block";
+        };
+
+        closeBtn.onclick = () => {
+            modal.style.display = "none";
+            overlay.style.display = "none";
+        };
+    </script>
+</body>
+
+</html>

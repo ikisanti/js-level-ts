@@ -1,0 +1,36 @@
+<!--
+//? Scroll Indicator (DOM + UI)
+//? Prompt:
+//? Create a progress bar at the top of the page that shows how far you've scrolled.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: dodgerblue;
+            width: 0%;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bar"></div>
+    <div style="height: 2000px; padding: 20px;">Scroll to see the effect</div>
+
+    <script>
+        const bar = document.getElementById("bar");
+        window.addEventListener("scroll", () => {
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            bar.style.width = `${scrolled}%`;
+        });
+    </script>
+</body>
+
+</html>

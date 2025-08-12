@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tabs</title>
+    <style>
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="tab-btn" data-tab="tab1">Tab 1</button>
+    <button class="tab-btn" data-tab="tab2">Tab 2</button>
+
+    <div id="tab1" class="tab-content active">Content 1</div>
+    <div id="tab2" class="tab-content">Content 2</div>
+
+    <script>
+        const buttons = document.querySelectorAll(".tab-btn");
+        const contents = document.querySelectorAll(".tab-content");
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                contents.forEach(c => c.classList.remove("active"));
+                document.getElementById(btn.dataset.tab).classList.add("active");
+            });
+        });
+    </script>
+</body>
+
+</html>

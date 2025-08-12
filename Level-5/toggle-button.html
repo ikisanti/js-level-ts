@@ -1,0 +1,32 @@
+< !DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Toggle Paragraph</title>
+    </head>
+
+    <body>
+
+        <script>
+            const button = document.createElement("button");
+            button.textContent = "Toggle";
+
+            const paragraph = document.createElement("p");
+            paragraph.textContent = "This is a paragraph.";
+
+            document.body.appendChild(button);
+            document.body.appendChild(paragraph);
+
+            button.addEventListener("click", () => {
+                if (paragraph.style.display === "none") {
+                    paragraph.style.display = "block";
+                } else {
+                    paragraph.style.display = "none";
+                }
+            });
+        </script>
+
+    </body>
+
+    </html>

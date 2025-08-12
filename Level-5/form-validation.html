@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Login Validation</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+        }
+
+        input {
+            display: block;
+            margin: 1rem 0;
+            padding: 0.5rem;
+            width: 200px;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Login Form</h2>
+
+    <form id="login-form">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("login-form");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            if (!email || !email.includes("@")) {
+                alert("❌ Please enter a valid email.");
+                return;
+            }
+
+            if (password.length < 6) {
+                alert("❌ Password must be at least 6 characters.");
+                return;
+            }
+
+            alert("✅ Login successful!");
+        });
+    </script>
+
+</body>
+
+</html>

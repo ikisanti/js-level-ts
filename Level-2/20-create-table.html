@@ -1,0 +1,46 @@
+<!-- 
+//! 20-create-table.html
+//? Create Table from Array (DOM)
+//? Prompt:
+//? Use JavaScript to dynamically create a table from a 2D array of data.
+//? Use only createElement, appendChild, etc.
+//? Example input: [["Name", "Age"], ["Alice", 25], ["Bob", 30]]
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Table</title>
+</head>
+
+<body>
+    <div id="table-container"></div>
+
+    <script>
+        const data = [
+            ["Name", "Age"],
+            ["Alice", 25],
+            ["Bob", 30]
+        ];
+
+        const container = document.getElementById("table-container");
+        const table = document.createElement("table");
+        table.border = "1";
+
+        data.forEach(row => {
+            const tr = document.createElement("tr");
+            row.forEach(cell => {
+                const td = document.createElement(row === data[0] ? "th" : "td");
+                td.textContent = cell;
+                tr.appendChild(td);
+            });
+            table.appendChild(tr);
+        });
+
+        container.appendChild(table);
+    </script>
+</body>
+
+</html>

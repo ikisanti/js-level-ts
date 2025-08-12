@@ -1,0 +1,45 @@
+<!--
+//? Tabs Component (DOM UI)
+//? Prompt:
+//? Create a tab system with 3 buttons. When you click a tab, show its content and hide the others.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .tab {
+            display: none;
+        }
+
+        .tab.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button data-tab="1">Tab 1</button>
+        <button data-tab="2">Tab 2</button>
+        <button data-tab="3">Tab 3</button>
+    </div>
+
+    <div id="tab-1" class="tab active">Content 1</div>
+    <div id="tab-2" class="tab">Content 2</div>
+    <div id="tab-3" class="tab">Content 3</div>
+
+    <script>
+        const tabs = document.querySelectorAll(".tab");
+        const buttons = document.querySelectorAll("button");
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                tabs.forEach(tab => tab.classList.remove("active"));
+                document.getElementById(`tab-${btn.dataset.tab}`).classList.add("active");
+            });
+        });
+    </script>
+</body>
+
+</html>
