@@ -1,4 +1,4 @@
-# WebUI JavaScript Interview Exercises (Globant Style)
+# Frontend JavaScript Interview Exercises
 
 This repository contains 40 coding challenges to practice JavaScript and DOM manipulation, based on real WebUI interview patterns from companies like **Globant**.
 
