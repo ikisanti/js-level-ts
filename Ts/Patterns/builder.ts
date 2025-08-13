@@ -13,7 +13,10 @@ class Computer {
 
     displayComputer() {
         console.log(`
-            ${this.brand}
+            ${'amd'}
             `)
     }
 }
+
+const laptop = new Computer().displayComputer()
+// console.log(laptop)
