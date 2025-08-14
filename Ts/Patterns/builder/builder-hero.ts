@@ -1,37 +1,38 @@
 
 
-
-interface HeroInterface { 
-    name: string;
-    age: number;
-    power: string;
-    hp?: number;
-}
-
-
 class Hero {
-    name: string;
-    age: number;
-    power: string;
-    hp: number;
 
-    constructor ({ name, age, power, hp }: HeroInterface) {
+    name?: string;
+    age?: number;
+
+    static create () {
+        return new Hero();
+        
+    }
+    
+
+    setName(name:string) {
         this.name = name
+        return this
+    }
+
+    setAge(age:number) {
         this.age = age
-        this.power = power
-        this.hp = hp ?? 200
+        return this
+    }
+
+    build() {
+        const result: { name?: string; age?: number } = {};
+        if (this.name !== undefined) result.name = this.name;
+        if (this.age !== undefined) result.age = this.age;
+        return result;
     }
 }
 
+const viking = Hero.create().setName("Ragnar").setAge(40).build()
+console.log(viking)
 
-const diegui: HeroInterface = { 
-    name: 'Diegui',
-    age: 32,
-    power: 'Beard',
-    hp: 250,
-}
+const archer = Hero.create().setName("Loki").build()
+console.log(archer)
 
-
-const Diegui = new Hero(diegui)
-console.table({Diegui})
 
