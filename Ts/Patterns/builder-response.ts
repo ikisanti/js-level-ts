@@ -46,6 +46,7 @@ function getUser() {
 function getError() {
     return ResponseBuilder.create()
         .error("User not found")
+        .messageText('User not found')
         .build();
 }
 
