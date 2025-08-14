@@ -2,7 +2,11 @@ class UserBuilder {
   private name?: string;
   private age?: number;
 
-  static create() { return new UserBuilder(); }
+  static create() { 
+    const instance = new UserBuilder();
+    console.log("New instance created:", instance);
+    return instance;
+  }
 
   setName(name: string) { 
     this.name = name; 
