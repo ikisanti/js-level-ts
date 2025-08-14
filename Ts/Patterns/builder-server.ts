@@ -1,17 +1,17 @@
 // server.ts
-// Ejecuta: deno run --allow-net server.ts
-// Abre en el navegador: http://localhost:8000/user o http://localhost:8000/error
+// Run: deno run --allow-net server.ts
+// Open in browser: http://localhost:9000/user or http://localhost:9000/error
 
-class ResponseBuilder {
+class ResponseBuilder<T = unknown> {
     private status: "success" | "error" = "success";
-    private data: any = null;
-    private message: string = "";
+    private data: T | null = null;
+    private message = "";
 
-    static create() {
-        return new ResponseBuilder();
+    static create<U = unknown>() {
+        return new ResponseBuilder<U>();
     }
 
-    ok(data: any) {
+    ok(data: T) {
         this.status = "success";
         this.data = data;
         return this;
@@ -34,7 +34,7 @@ class ResponseBuilder {
             status: this.status,
             data: this.data,
             message: this.message,
-            timestamp: new Date().toISOString() // ejemplo extra
+            timestamp: new Date().toISOString()
         };
     }
 }
@@ -43,8 +43,8 @@ Deno.serve({ port: 9000 }, (req) => {
     const url = new URL(req.url);
 
     if (url.pathname === "/user") {
-        // Endpoint correcto usando builder
-        const res = ResponseBuilder.create()
+        // Correct endpoint using builder
+        const res = ResponseBuilder.create<{ id: number; name: string }>()
             .ok({ id: 1, name: "Alice" })
             .messageText("User found")
             .build();
@@ -55,8 +55,8 @@ Deno.serve({ port: 9000 }, (req) => {
     }
 
     if (url.pathname === "/error") {
-        // Simulación de error usando builder
-        const res = ResponseBuilder.create()
+        // Error simulation using builder
+        const res = ResponseBuilder.create<null>()
             .error("User not found")
             .build();
 
